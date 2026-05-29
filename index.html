@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="dark light">
+    <title>Lieder Philadelphia / 30.5.26</title>
+    <script>
+        (() => {
+            const savedTheme = localStorage.getItem('theme-preference');
+            if (savedTheme === 'dark' || savedTheme === 'light') {
+                document.documentElement.dataset.theme = savedTheme;
+            }
+        })();
+    </script>
+    <style>
+        :root {
+            --bg-color: #f4efe7;
+            --surface-color: #fffaf2;
+            --surface-accent: #efe4d2;
+            --text-main: #2b241d;
+            --text-muted: #6d6255;
+            --accent-color: #b8641d;
+            --font-size-lyrics: 1.2rem;
+            --border-color: #d7c7b4;
+            --overlay-bg: rgba(255, 250, 242, 0.92);
+            --shadow-color: rgba(75, 55, 30, 0.18);
+            --control-bg: #e9dccb;
+            --control-active-bg: #b8641d;
+            --control-active-text: #fffaf2;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --surface-color: #1e1e1e;
+                --surface-accent: #2a2a2a;
+                --text-main: #e0e0e0;
+                --text-muted: #a0a0a0;
+                --accent-color: #ffb74d;
+                --border-color: #3d3d3d;
+                --overlay-bg: rgba(30, 30, 30, 0.95);
+                --shadow-color: rgba(0, 0, 0, 0.6);
+                --control-bg: #2a2a2a;
+                --control-active-bg: #ffb74d;
+                --control-active-text: #1a1a1a;
+            }
+        }
+
+        :root[data-theme='light'] {
+            --bg-color: #f4efe7;
+            --surface-color: #fffaf2;
+            --surface-accent: #efe4d2;
+            --text-main: #2b241d;
+            --text-muted: #6d6255;
+            --accent-color: #b8641d;
+            --border-color: #d7c7b4;
+            --overlay-bg: rgba(255, 250, 242, 0.92);
+            --shadow-color: rgba(75, 55, 30, 0.18);
+            --control-bg: #e9dccb;
+            --control-active-bg: #b8641d;
+            --control-active-text: #fffaf2;
+        }
+
+        :root[data-theme='dark'] {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --surface-accent: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-color: #ffb74d;
+            --border-color: #3d3d3d;
+            --overlay-bg: rgba(30, 30, 30, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --control-bg: #2a2a2a;
+            --control-active-bg: #ffb74d;
+            --control-active-text: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 90px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        header {
+            background-color: var(--surface-color);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .toolbar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .theme-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px;
+            background: var(--control-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 7px 11px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .theme-btn.active {
+            background: var(--control-active-bg);
+            color: var(--control-active-text);
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .category-block {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin: 15px 0 10px 0;
+            padding-left: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Song-Button im Verzeichnis */
+        .song-trigger {
+            width: 100%;
+            background-color: var(--surface-color);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .song-trigger:active {
+            background-color: var(--surface-accent);
+        }
+
+        .song-trigger .artist {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        /* Song-Inhalt-Container */
+        .song-content {
+            display: none;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin-top: -12px;
+            margin-bottom: 12px;
+            padding: 20px 15px;
+            animation: fadeIn 0.2s ease-out;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .song-content.active {
+            display: block;
+        }
+
+        .song-content h2 {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+        }
+
+        .song-content .song-artist {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        /* Songtexte Formatierung */
+        .lyrics {
+            font-size: var(--font-size-lyrics);
+            white-space: pre-line;
+            letter-spacing: 0.2px;
+        }
+
+        .lyrics br {
+            content: "";
+            margin: 0.5em 0;
+            display: block;
+        }
+
+        /* Fixed Action Bar unten */
+        .action-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--overlay-bg);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 4px 25px var(--shadow-color);
+            z-index: 200;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .action-btn:active {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ansicht bei aktiver Suche */
+        .searching .category-title {
+            display: none;
+        }
+        .searching .song-trigger {
+            margin-top: 5px;
+        }
+
+        @media (max-width: 560px) {
+            .toolbar-row {
+                justify-content: center;
+            }
+
+            .theme-switcher {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lieder Philadelphia / 30.5.26</h1>
+        <div class="toolbar-row">
+            <div class="theme-switcher" aria-label="Farbschema">
+                <button type="button" class="theme-btn" data-theme-option="system" onclick="setThemePreference('system')">System</button>
+                <button type="button" class="theme-btn" data-theme-option="light" onclick="setThemePreference('light')">Hell</button>
+                <button type="button" class="theme-btn" data-theme-option="dark" onclick="setThemePreference('dark')">Dunkel</button>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Lied oder Interpret suchen..." oninput="searchSongs()">
+        </div>
+    </header>
+
+    <main id="mainList">
+
+        <!-- KATEGORIE 1 -->
+        <div class="category-block" data-cat="1">
+            <div class="category-title">Fernweh, Liebe und Melancholie</div>
+
+            <div class="song-wrapper" data-title="Heute hier morgen dort" data-artist="Hannes Wader">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Heute hier, morgen dort<span class="artist">Hannes Wader</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Heute hier, morgen dort</h2>
+                    <div class="song-artist">Hannes Wader</div>
+                    <div class="lyrics">1 Heute hier, morgen dort, bin kaum da, muss ich fort  
+Hab mich niemals deswegen beklagt  
+Hab es selbst so gewählt, nie die Jahre gezählt  
+Nie nach Gestern und Morgen gefragt
+
+<strong>Refrain:</strong>  
+Manchmal träume ich schwer und dann denk ich es wär  
+Zeit zu bleiben und nun was ganz andres zu tun  
+So vergeht Jahr um Jahr und es ist mir längst klar  
+Dass nichts bleibt, dass nichts bleibt, wie es war
+
+2 Dass man mich kaum vermisst, schon nach Tagen vergisst  
+Wenn ich längst wieder anderswo bin  
+Stört und kümmert mich nicht, vielleicht bleibt mein Gesicht  
+Doch dem Ein' oder Andern im Sinn
+
+3 Fragt mich einer, warum ich so bin, bleib ich stumm  
+Denn die Antwort darauf fällt mir schwer  
+Denn was neu ist, wird alt, und was gestern noch galt  
+Stimmt schon heut oder morgen nicht mehr</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Über den Wolken" data-artist="Reinhard Mey">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Über den Wolken<span class="artist">Reinhard Mey</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Über den Wolken</h2>
+                    <div class="song-artist">Reinhard Mey</div>
+                    <div class="lyrics">Wind Nord/Ost, Startbahn null-drei  
+Bis hier hör' ich die Motoren  
+Wie ein Pfeil zieht sie vorbei  
+Und es dröhnt in meinen Ohren  
+Und der nasse Asphalt bebt  
+Wie ein Schleier staubt der Regen  
+Bis sie abhebt und sie schwebt  
+Der Sonne entgegen
+
+<strong>Refrain:</strong>
+Über den Wolken  
+Muss die Freiheit wohl grenzenlos sein  
+Alle Ängste, alle Sorgen - Sagt man  
+Blieben darunter verborgen - Und dann  
+Würde was uns groß und wichtig erscheint  
+Plötzlich nichtig und klein
+
+Ich seh' ihr noch lange nach  
+Seh' sie die Wolken erklimmen  
+Bis die Lichter nach und nach  
+Ganz im Regengrau verschwimmen  
+Meine Augen haben schon  
+Jenen winz'gen Punkt verloren  
+Nur von fern' klingt monoton  
+Das Summen der Motoren
+
+Über den Wolken...
+
+Dann ist alles still, ich geh'  
+Regen durchdringt meine Jacke  
+Irgendjemand kocht Kaffee  
+In der Luftaufsichtsbaracke  
+In den Pfützen schwimmt Benzin  
+Schillernd wie ein Regenbogen  
+Wolken spiegeln sich darin  
+Ich wär' gern mitgeflogen
+
+Über den Wolken...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Griechischer Wein" data-artist="Udo Jürgens">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Griechischer Wein<span class="artist">Udo Jürgens</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Griechischer Wein</h2>
+                    <div class="song-artist">Udo Jürgens</div>
+                    <div class="lyrics">Es war schon dunkel  
+Als ich durch Vorstadtstraßen heimwärts ging  
+Da war ein Wirtshaus  
+Aus dem das Licht noch auf den Gehsteig schien  
+Ich hatte Zeit und mir war kalt, drum trat ich ein  
+Da saßen Männer mit braunen Augen und mit schwarzem Haar  
+Und aus der Jukebox erklang Musik  
+Die fremd und südlich war  
+Als man mich sah  
+Stand einer auf und lud mich ein
+
+<strong>Refrain:</strong>
+Griechischer Wein ist  
+So wie das Blut der Erde  
+Komm', schenk dir ein  
+Und wenn ich dann traurig werde  
+Liegt es daran  
+Daß ich immer träume von daheim  
+Du mußt verzeih'n  
+Griechischer Wein -  
+Und die altvertrauten Lieder -  
+Schenk' nochmal ein,  
+Denn ich fühl' die Sehnsucht  
+Wieder, in dieser Stadt  
+Werd' ich immer nur ein Fremder sein, und allein
+
+Und dann erzählten sie mir von grünen Hügeln, Meer und Wind  
+Und von alten Häusern und jungen Frauen, die alleine sind  
+Und von dem Kind das seinen Vater noch nie sah  
+Sie sagten sich immer wieder  
+Irgendwann geht es zurück  
+Und das Ersparte genügt zu Hause für ein kleines Glück  
+Und bald denkt keiner mehr daran  
+Wie es hier war
+
+Griechischer Wein ist...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Er gehört zu mir" data-artist="Marianne Rosenberg">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Er gehört zu mir<span class="artist">Marianne Rosenberg</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Er gehört zu mir</h2>
+                    <div class="song-artist">Marianne Rosenberg</div>
+                    <div class="lyrics">Er gehört zu mir, wie mein Name an der Tür,  
+und ich weiß, er bleibt hier,  
+nie vergeß ich unseren ersten Tag,  
+Naaa naa naa na, na na na  
+denn ich fühlte gleich, daß er mich mag,  
+Naaa naa naa na, na na na  
+ist es wahre Liebe (uuuhhhuuuhhuuu)  
+die nie mehr vergeht (uhuuuhuu)  
+oder wird die Liebe, vom Winde verweht?
+
+Er gehört zu mir, wie mein Name an der Tür,  
+und ich weiß, er bleibt hier,  
+alles fangen wir gemeinsam an,  
+Naaa naa naa na, na na na  
+doch vergeß ich nie, wie man allein sein kann,  
+Naaa naa naa na, na na na</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Ich wollte nie erwachsen sein Nessaja" data-artist="Peter Maffay / Tabaluga">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Ich wollte nie erwachsen sein (Nessaja)<span class="artist">Peter Maffay / Tabaluga</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Ich wollte nie erwachsen sein (Nessaja)</h2>
+                    <div class="song-artist">Peter Maffay / Tabaluga</div>
+                    <div class="lyrics">1 Ich wollte nie erwachsen sein  
+Hab immer mich zur Wehr gesetzt  
+Von außen wurd ich hart wie Stein  
+Und doch hat man mich oft verletzt
+
+2 Unten auf dem Meeresgrund  
+Wo alles Leben ewig schweigt  
+Kann ich noch meine Träume sehen  
+Wie Luft, die aus der Tiefe steigt
+
+3 Ich gleite durch die Dunkelheit  
+Und warte auf dem Morgenlicht  
+Dann spiel ich mit dem Sonnenstrahl  
+Der silbern sich im Wasser bricht
+
+<strong>Refrain:</strong>  
+Irgendwo tief in mir  
+Bin ich ein Kind geblieben  
+Erst dann, wenn ich's nicht mehr spüren kann  
+Weiß ich, es ist für mich zu spät, zu spät, zu spät</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Wenn ein Mensch kurze Zeit lebt" data-artist="Puhdys">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Wenn ein Mensch kurze Zeit lebt<span class="artist">Puhdys</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Wenn ein Mensch kurze Zeit lebt</h2>
+                    <div class="song-artist">Puhdys</div>
+                    <div class="lyrics">Wenn ein Mensch kurze Zeit lebt,  
+sagt die Welt das er zu früh geht.  
+Wenn ein Mensch lange Zeit lebt,  
+sagt die Welt es ist Zeit . . .
+
+Meine Freundin ist schön,  
+als ich aufstand ist sie gegangen,  
+weckt sie nicht, bis sie sich regt,  
+ich hab' mich in ihren Schatten gelegt.
+
+Jegliches hat seine Zeit,  
+Steine sammeln - Steine zerstreun.  
+Bäume pflanzen - Bäume abhaun,  
+leben und sterben und Streit.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Die Antwort weiß ganz allein der Wind" data-artist="Marlene Dietrich">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Die Antwort weiß ganz allein der Wind<span class="artist">Marlene Dietrich</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Die Antwort weiß ganz allein der Wind</h2>
+                    <div class="song-artist">Marlene Dietrich</div>
+                    <div class="lyrics">Wie viele Straßen auf dieser Welt  
+Sind Straßen voll Tränen und Leid  
+Wie viele Meere auf dieser Welt  
+Sind Meere der Traurigkeit?  
+Wie viele Mütter sind lang schon allein  
+Und warten und warten noch heut?
+
+Die Antwort, mein Freund, weiß ganz allein der Wind...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORIE 2 -->
+        <div class="category-block" data-cat="2">
+            <div class="category-title">Flasche auf und gut gelaunt</div>
+
+            <div class="song-wrapper" data-title="Es gibt kein Bier auf Hawaii" data-artist="Paul Kuhn">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Es gibt kein Bier auf Hawaii<span class="artist">Paul Kuhn</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Es gibt kein Bier auf Hawaii</h2>
+                    <div class="song-artist">Paul Kuhn</div>
+                    <div class="lyrics"><strong>Refrain:</strong>  
+Es gibt kein Bier auf Hawaii, es gibt kein Bier.  
+D'rum fahr' ich nicht nach Hawaii, d'rum bleib ich hier.  
+Es ist so heiß auf Hawaii, kein kühler Fleck.  
+Und nur vom Hulahula geht der Durst nicht weg.
+
+1. Meine Braut die heißt Marianne,  
+wir sind seit 12 Jahren verlobt.  
+Sie hätte mich so gern zum Manne  
+und hat schon mit Klage gedroht.  
+Die Hochzeit wär' längst schon gewesen,  
+wenn die Hochzeitsreise nicht wär'.  
+Denn sie will nach Hawaii, ja sie will nach Hawaii,  
+und das fällt mir so unsagbar schwer.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Die Getränke sind frei" data-artist="Parodie (Melodie: Die Gedanken sind frei)">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Die Getränke sind frei<span class="artist">Parodie</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Die Getränke sind frei</h2>
+                    <div class="song-artist">Parodie (Melodie: Die Gedanken sind frei)</div>
+                    <div class="lyrics">1. Die Getränke sind frei, wir woll'n einen heben!  
+Wer immer das sei: Der Spender soll leben!  
+Man darf nicht vergessen, drei Bier und ein Essen,  
+drum Leber verzeih, die Getränke sind frei.
+
+2. Die Getränke sind frei und gut für die Nieren,  
+drum kommet herbei und lasst euch kurieren.  
+Die Ärzte empfehlen für durstige Kehlen,  
+oft Bier als Arznei, die Getränke sind frei.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Rote Lippen soll man küssen" data-artist="Cliff Richard">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Rote Lippen soll man küssen<span class="artist">Cliff Richard</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Rote Lippen soll man küssen</h2>
+                    <div class="song-artist">Cliff Richard</div>
+                    <div class="lyrics"><strong>Refrain:</strong>  
+Rote Lippen soll man küssen,  
+denn zum Küssen sind sie da.  
+Rote Lippen sind dem siebten Himmel ja so nah.  
+Ich habe dich gesehen und ich hab mir gedacht:  
+So rote Lippen soll man küssen Taa-aag und Nacht.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Hello Mary Lou" data-artist="Jan & Kjeld">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Hello Mary Lou<span class="artist">Jan & Kjeld</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Hello Mary Lou</h2>
+                    <div class="song-artist">Jan & Kjeld</div>
+                    <div class="lyrics"><strong>Refrain:</strong>  
+He, he, hello, Mary Lou, sieh mal an.  
+Dein Kleid ist schick und schick sind deine Schuh.  
+Und du, Mary Lou, du lachst dazu,  
+wie ein Sonnenschein, Mary Lou.
+
+1. Aus dem Hause vis-a-vis,  
+sieht man jeden Morgen früh,  
+die Mary Lou den Weg zur Schule geh'n.  
+Und sie schaut so nett daher,  
+grüßt so freundlich, bitte sehr.  
+Das finden alle an ihr wunderschön.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORIE 3 -->
+        <div class="category-block" data-cat="3">
+            <div class="category-title">Am Lagerfeuer und auf Reisen</div>
+
+            <div class="song-wrapper" data-title="Die Gedanken sind frei" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Die Gedanken sind frei<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Die Gedanken sind frei</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Die Gedanken sind frei wer kann sie erraten?  
+Sie fliehen vorbei wie nächtliche Schatten.  
+Kein Mensch kann sie wissen, kein Jäger erschießen.  
+mit Pulver und Blei Die Gedanken sind frei!
+
+2. Ich denke, was ich will und was mich beglücket,  
+doch alles in der Still und wie es sich schicket.  
+Mein Wunsch und Begehren kann niemand verwehren...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Am Brunnen vor dem Tore" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Am Brunnen vor dem Tore<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Am Brunnen vor dem Tore</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">Am Brunnen vor dem Thore  
+Da steht ein Lindenbaum:  
+Ich träumt’ in seinem Schatten  
+So manchen süßen Traum.  
+Ich schnitt in seine Rinde  
+So manches liebe Wort;  
+Es zog in Freud und Leide  
+Zu ihm mich immer fort.
+
+Ich mußt’ auch heute wandern  
+Vorbei in tiefer Nacht,  
+Da hab’ ich noch im Dunkel  
+Die Augen zugemacht.  
+Und seine Zweige rauschten,  
+Als riefen sie mir zu:  
+Komm her zu mir, Geselle,  
+Hier findst Du Deine Ruh’!</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Das Wandern ist des Müllers Lust" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Das Wandern ist des Müllers Lust<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Das Wandern ist des Müllers Lust</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. |:Das Wandern ist des Müllers Lust: das Wandern!  
+Das muss ein schlechter Müller sein  
+|:dem niemals fiel das Wandern ein:|  
+Das Wandern, das Wandern, ...
+
+2. |: Vom Wasser haben wir's gelernt: vom Wasser!  
+Das hat nicht Ruh' bei Tag und Nacht  
+|:ist stets auf Wanderschaft bedacht:|  
+Das Wasser, das Wasser...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Das Lieben bringt groß Freud" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Das Lieben bringt groß Freud<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Das Lieben bringt groß Freud</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Das Lieben bringt gross Freud, das wissen alle Leut.  
+Weiß mir ein schönes Schätzelein mit zwei schwarzbraunen Äugelein,  
+das mir, das mir, das mir mein Herz erfreut.
+
+2. Sie hat schwarzbraune Haarla dazu zwei Äuglein klar.  
+Ihr sanfter Blick, ihr Zuckermund hat mir mein Herz im Leib verwundt.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="In einen Harung jung und schlank" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>In einen Harung jung und schlank<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>In einen Harung jung und schlank</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. In einen Harung jung und schlank.  
+Zwo, drei, vier, sit tata, tirallala,  
+der auf dem Meeresgrunde schwamm.  
+Zwo, drei, vier, sit tata, tirallala.  
+|: Verliebte sich, o Wunder, 'ne alte Flunder, 'ne alte Flunder :|
+
+2. Der Harung sprach :"Du bist verrückt.  
+Zwo, drei, vier, sit tata, tirallala.  
+Du bist mir viel zu plattgedrückt.  
+Zwo, drei, vier, sit tata, tirallala.  
+|: Rutsch mir den Buckel runter, du alte Flunder, du alte Flunder :|</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Horch was kommt von draußen rein" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Horch, was kommt von draußen rein<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Horch, was kommt von draußen rein</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Horch, was kommt von draußen 'rein, hollahi, hollaho!  
+Wird wohl mein Feinsliebchen sein, hollahihaho!  
+Geht vorbei und kommt nicht 'rein, hollahi, hollaho!  
+Wird's wohl nicht gewesen sein, hollahihaho!
+
+2. Leute haben's oft gesagt, hollahi, hollaho!  
+Dass ich ein Feinsliebchen hab', hollahihaho!  
+Lass sie reden, lass sie geh'n...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Es hatte ein Bauer ein schönes Weib" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Es hatte ein Bauer ein schönes Weib<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Es hatte ein Bauer ein schönes Weib</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Es hatte ein Bauer ein schönes Weib, das blieb so gerne zu Haus.  
+Sie bat oft ihren lieben Mann, er sollte doch fahren hinaus.  
+Er sollte doch fahren ins Heu.  
+Er sollte doch fahren ins hahaha, hahaha Heu juchei, ins Heu juchei,  
+er sollte doch fahren ins Heu.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Kein schöner Land in dieser Zeit" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Kein schöner Land in dieser Zeit<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Kein schöner Land in dieser Zeit</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Kein schöner Land in dieser Zeit als hier das unsre weit und breit.  
+Wo wir uns finden, wohl untern Linden, zur Abendzeit!  
+Wo wir uns finden, wohl untern Linden, zur Abendzeit!
+
+2. Da haben wir so manche Stund gesessen wohl in froher Rund.  
+Und taten singen, die Lieder klingen im Eichengrund!</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Abendstille überall" data-artist="Kanon">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Abendstille überall (Kanon)<span class="artist">Kanon</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Abendstille überall</h2>
+                    <div class="song-artist">Kanon</div>
+                    <div class="lyrics">Abendstille überall.  
+Nur im Tal die Nachtigall,  
+singt ihre Weise klagend und leise durch das Tal.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Die Vogelhochzeit" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Die Vogelhochzeit<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Die Vogelhochzeit</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Die Vögel wollten Hochzeit machen in dem grünen Walde  
+Fidiralala, fidiralala, fidiralalalala!
+
+2. Der Stare, der Stare, der flocht der Braut die Haare.
+
+3. Die Lerche, die Lerche, die führt die Braut zur Kerche.
+
+11. Brautmutter war die Eule, nahm Abschied mit Geheule.
+
+12. Der Uhu, der Uhu, der macht die Fensterläden zu.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Hoch auf dem gelben Wagen" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Hoch auf dem gelben Wagen<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Hoch auf dem gelben Wagen</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Hoch auf dem gelben Wagen sitz ich beim Schwager vorn.  
+Vorwärts die Rosse traben, lustig schmettert das Horn.  
+Felder, Wiesen und Auen leuchtendes Ährengold.  
+Ich möchte so gerne noch schauen, aber der Wagen, der rollt.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Es zogen auf sonnigen Wegen" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Es zogen auf sonnigen Wegen<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Es zogen auf sonnigen Wegen</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Es zogen auf sonnigen Wegen drei lachende Mädchen vorbei, ja vorbei.  
+Sie schwenkten die Röcke verwegen und trällerten alle so eins, zwei, drei so:  
+Ti ra la la la la,
+
+2. Sie setzen so zierlich die Beine und sprangen vergnügt durch den Mai, durch den Mai.  
+Ich wurde nicht schlüssig für eine drum küsst ich sie alle so eins, zwei, drei so:  
+Ti ra la...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="An der Saale hellem Strande" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>An der Saale hellem Strande<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>An der Saale hellem Strande</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. An der Saale hellem Strande stehen Burgen stolz und kühn.  
+Ihre Dächer sind zerfallen, und der Wind streicht durch die Hallen,  
+Wolken ziehen d'rüber hin.
+
+2. Zwar die Ritter sind verschwunden, nimmer klingen Speer und Schild.  
+Doch dem Wandersmann erscheinen in den altbemoosten Steinen  
+oft Gestalten zart und mild.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Auf auf zum fröhlichen Jagen" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Auf, auf zum fröhlichen Jagen<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Auf, auf zum fröhlichen Jagen</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Auf, auf zum fröhlichen Jagen, Auf in die grüne Heid,  
+Es fängt schon an zu tagen, es ist die höchste Zeit.  
+Die Vögel in den Wäldern sind schon vom Schlaf erwacht.  
+Und haben auf den Feldern das Morgenlied vollbracht.  
+Tri-di-he-jo, di-he-jo, di-he-di-he-di-jo...</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Es dunkelt schon in der Heide" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Es dunkelt schon in der Heide<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Es dunkelt schon in der Heide</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Es dunkelt schon in der Heide, nach Hause lasst uns geh'n.  
+|: Wir haben das Korn geschnitten mit unserm blanken Schwert :|
+
+2. Ich hörte ein Sichelein rauschen, wohl rauschen durch das Korn.  
+|: Ich hört mein Feinslieb klagen, sie hätt ihr Lieb verlor'n :|</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Sah ein Knab ein Röslein stehn" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Sah ein Knab’ ein Röslein stehn<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Sah ein Knab’ ein Röslein stehn</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">Sah ein Knab’ ein Röslein stehn,  
+Röslein auf der Heiden,  
+War so jung und morgenschön,  
+Lief er schnell es nah zu sehn,  
+Sah’s mit vielen Freuden.  
+Röslein, Röslein, Röslein roth,  
+Röslein auf der Heiden.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="In einem Bächlein helle Die Forelle" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>In einem Bächlein helle (Die Forelle)<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>In einem Bächlein helle (Die Forelle)</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">In einem Bächlein helle,  
+Da schoß in froher Eil  
+Die launische Forelle  
+Vorüber, wie ein Pfeil:  
+Ich stand an dem Gestade  
+Und sah in süßer Ruh  
+Des muntern Fischleins Bade  
+Im klaren Bächlein zu.</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Nehmt Abschied Brüder" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Nehmt Abschied, Brüder<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Nehmt Abschied, Brüder</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Nehmt Abschied Brüder ungewiss ist alle Wiederkehr.  
+Die Zukunft liegt in Finsternis und macht das Herz uns schwer.
+
+<strong>Refrain:</strong>  
+Der Himmel wölbt sich übers Land. Ade, Auf Wiedersehn!  
+Wir ruhen all in Gottes Hand. Lebt wohl, Auf Wiedersehn!</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Hab mein Wage vollgeladen" data-artist="Volkslied">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Hab mein Wage vollgeladen<span class="artist">Volkslied</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Hab mein Wage vollgeladen</h2>
+                    <div class="song-artist">Volkslied</div>
+                    <div class="lyrics">1. Hab mein Wage vollgelade,  
+voll mit alten Weibsen.  
+Als wir in die Stadt 'neinkamen,  
+fing'n sie an zu keifen.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORIE 4 -->
+        <div class="category-block" data-cat="4">
+            <div class="category-title">🗺 International & English Classics</div>
+
+            <div class="song-wrapper" data-title="Sailing" data-artist="Rod Stewart">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Sailing<span class="artist">Rod Stewart</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Sailing</h2>
+                    <div class="song-artist">Rod Stewart</div>
+                    <div class="lyrics">I am sailing - I am sailing  
+Home again - 'Cross the sea  
+I am sailing, - Stormy waters  
+To be near you, - To be free
+
+I am flying, - I am flying  
+Like a bird - 'Cross the sky  
+I am flying, - Passing high clouds  
+To be with you, - To be free</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Let It Be" data-artist="The Beatles">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Let It Be<span class="artist">The Beatles</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Let It Be</h2>
+                    <div class="song-artist">The Beatles</div>
+                    <div class="lyrics">When I find myself in times of trouble,  
+Mother Mary comes to me  
+Speaking words of wisdom, let it be  
+And in my hour of darkness she is standing right in front of me  
+Speaking words of wisdom, let it be
+
+<strong>Refrain:</strong>
+Let it be, let it be, let it be, let it be  
+Whisper words of wisdom, let it be
+
+And when the broken hearted people living in the world agree  
+There will be an answer, let it be  
+For though they may be parted, there is still a chance that they will see  
+There will be an answer, let it be</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Yesterday" data-artist="The Beatles">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Yesterday<span class="artist">The Beatles</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Yesterday</h2>
+                    <div class="song-artist">The Beatles</div>
+                    <div class="lyrics">Yesterday, all my troubles seemed so far away  
+Now it looks as though they're here to stay  
+Oh, I believe in yesterday
+
+Suddenly, I'm not half the man I used to be  
+There's a shadow hanging over me.  
+Oh, yesterday came suddenly
+
+Why she had to go I don't know she wouldn't say  
+I said something wrong, now I long for yesterday</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="Somewhere over the Rainbow" data-artist="Traditional">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>Somewhere over the Rainbow<span class="artist">Traditional</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>Somewhere over the Rainbow</h2>
+                    <div class="song-artist">Traditional</div>
+                    <div class="lyrics">Somewhere over the rainbow  
+Way up high  
+And the dreams that you dream of  
+Once in a lullaby
+
+Somewhere over the rainbow  
+Bluebirds fly  
+And the dreams that you dream of  
+Dreams really do come true
+
+Someday, I wish upon a star  
+Wake up where the clouds are far behind me  
+Where trouble melts like lemon drops High above the chimney top  
+That's where you'll find me</div>
+                </div>
+            </div>
+
+            <div class="song-wrapper" data-title="John Browns Body" data-artist="Traditional">
+                <button class="song-trigger" onclick="toggleSong(this)">
+                    <div>John Brown's Body<span class="artist">Traditional</span></div>
+                    <span>▼</span>
+                </button>
+                <div class="song-content">
+                    <h2>John Brown's Body</h2>
+                    <div class="song-artist">Traditional</div>
+                    <div class="lyrics">1. John Brown's body lies a-moulderin' in the grave,  
+John Brown's body lies a-moulderin' in the grave,  
+John Brown's body lies a-moulderin' in the grave,  
+But his soul goes marching on.
+
+<strong>Refrain:</strong>  
+Glory glory hallelujah,  
+Glory glory hallelujah,  
+Glory glory hallelujah,  
+But his soul goes marching on.</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Steuerungsleiste unten für Einhand-Bedienung -->
+    <div class="action-bar">
+        <button class="action-btn" onclick="adjustFont(-0.1)">A−</button>
+        <button class="action-btn" onclick="adjustFont(0.1)">A+</button>
+        <button class="action-btn" onclick="closeAllSongs()">Alles zu</button>
+        <button class="action-btn" onclick="scrollToTop()">⬆ Oben</button>
+    </div>
+
+    <script>
+        const themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function getStoredThemePreference() {
+            return localStorage.getItem('theme-preference') || 'system';
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'dark' || theme === 'light') {
+                document.documentElement.dataset.theme = theme;
+            } else {
+                delete document.documentElement.dataset.theme;
+            }
+
+            document.querySelectorAll('.theme-btn').forEach(button => {
+                const isActive = button.dataset.themeOption === theme;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+        }
+
+        function setThemePreference(theme) {
+            localStorage.setItem('theme-preference', theme);
+            applyTheme(theme);
+        }
+
+        themeMediaQuery.addEventListener('change', () => {
+            if (getStoredThemePreference() === 'system') {
+                applyTheme('system');
+            }
+        });
+
+        applyTheme(getStoredThemePreference());
+
+        // Funktion zum Auf- und Zuklappen eines Liedes
+        function toggleSong(button) {
+            const content = button.nextElementSibling;
+            const arrow = button.querySelector('span:last-child');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.textContent = '▼';
+            } else {
+                content.classList.add('active');
+                arrow.textContent = '▲';
+                // Automatisches Scrollen zum Songanfang, damit es optimal im Blickfeld ist
+                setTimeout(() => {
+                    button.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        }
+
+        // Alle Lieder gleichzeitig einklappen
+        function closeAllSongs() {
+            document.querySelectorAll('.song-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.song-trigger span:last-child').forEach(arrow => {
+                arrow.textContent = '▼';
+            });
+        }
+
+        // Live-Suchfunktion (Filtert nach Titel und Interpret)
+        function searchSongs() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const wrappers = document.querySelectorAll('.song-wrapper');
+            const mainList = document.getElementById('mainList');
+
+            if (query === '') {
+                mainList.classList.remove('searching');
+                wrappers.forEach(w => w.style.display = 'block');
+                return;
+            }
+
+            mainList.classList.add('searching');
+
+            wrappers.forEach(wrapper => {
+                const title = wrapper.getAttribute('data-title').toLowerCase();
+                const artist = wrapper.getAttribute('data-artist').toLowerCase();
+
+                if (title.includes(query) || artist.includes(query)) {
+                    wrapper.style.display = 'block';
+                } else {
+                    wrapper.style.display = 'none';
+                    // Schließen, wenn es unsichtbar wird
+                    wrapper.querySelector('.song-content').classList.remove('active');
+                    wrapper.querySelector('.song-trigger span:last-child').textContent = '▼';
+                }
+            });
+        }
+
+        // Anpassung der Textgröße für die Lyrics
+        let currentSize = 1.2;
+        function adjustFont(step) {
+            currentSize += step;
+            if (currentSize < 0.9) currentSize = 0.9;
+            if (currentSize > 2.0) currentSize = 2.0;
+            
+            document.querySelectorAll('.lyrics').forEach(el => {
+                el.style.fontSize = currentSize + 'rem';
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
