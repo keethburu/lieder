@@ -1,0 +1,424 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Fernweh, Liebe und Melancholie",
+      "songs": [
+        {
+          "slug": "heute-hier-morgen-dort-hannes-wader",
+          "title": "Heute hier, morgen dort",
+          "listTitle": "Heute hier, morgen dort",
+          "artist": "Hannes Wader",
+          "listArtist": "Hannes Wader",
+          "searchArtist": "Hannes Wader",
+          "src": "content/songs/heute-hier-morgen-dort-hannes-wader.md"
+        },
+        {
+          "slug": "uber-den-wolken-reinhard-mey",
+          "title": "Über den Wolken",
+          "listTitle": "Über den Wolken",
+          "artist": "Reinhard Mey",
+          "listArtist": "Reinhard Mey",
+          "searchArtist": "Reinhard Mey",
+          "src": "content/songs/uber-den-wolken-reinhard-mey.md"
+        },
+        {
+          "slug": "griechischer-wein-udo-jurgens",
+          "title": "Griechischer Wein",
+          "listTitle": "Griechischer Wein",
+          "artist": "Udo Jürgens",
+          "listArtist": "Udo Jürgens",
+          "searchArtist": "Udo Jürgens",
+          "src": "content/songs/griechischer-wein-udo-jurgens.md"
+        },
+        {
+          "slug": "er-gehort-zu-mir-marianne-rosenberg",
+          "title": "Er gehört zu mir",
+          "listTitle": "Er gehört zu mir",
+          "artist": "Marianne Rosenberg",
+          "listArtist": "Marianne Rosenberg",
+          "searchArtist": "Marianne Rosenberg",
+          "src": "content/songs/er-gehort-zu-mir-marianne-rosenberg.md"
+        },
+        {
+          "slug": "ich-wollte-nie-erwachsen-sein-nessaja-peter-maffay-tabaluga",
+          "title": "Ich wollte nie erwachsen sein (Nessaja)",
+          "listTitle": "Ich wollte nie erwachsen sein (Nessaja)",
+          "artist": "Peter Maffay / Tabaluga",
+          "listArtist": "Peter Maffay / Tabaluga",
+          "searchArtist": "Peter Maffay / Tabaluga",
+          "src": "content/songs/ich-wollte-nie-erwachsen-sein-nessaja-peter-maffay-tabaluga.md"
+        },
+        {
+          "slug": "wenn-ein-mensch-kurze-zeit-lebt-puhdys",
+          "title": "Wenn ein Mensch kurze Zeit lebt",
+          "listTitle": "Wenn ein Mensch kurze Zeit lebt",
+          "artist": "Puhdys",
+          "listArtist": "Puhdys",
+          "searchArtist": "Puhdys",
+          "src": "content/songs/wenn-ein-mensch-kurze-zeit-lebt-puhdys.md"
+        },
+        {
+          "slug": "die-antwort-weiss-ganz-allein-der-wind-marlene-dietrich",
+          "title": "Die Antwort weiß ganz allein der Wind",
+          "listTitle": "Die Antwort weiß ganz allein der Wind",
+          "artist": "Marlene Dietrich",
+          "listArtist": "Marlene Dietrich",
+          "searchArtist": "Marlene Dietrich",
+          "src": "content/songs/die-antwort-weiss-ganz-allein-der-wind-marlene-dietrich.md"
+        },
+        {
+          "slug": "sag-mir-wo-die-blumen-sind-marlene-dietrich",
+          "title": "Sag mir wo die Blumen sind",
+          "listTitle": "Sag mir wo die Blumen sind",
+          "artist": "Marlene Dietrich",
+          "listArtist": "Marlene Dietrich",
+          "searchArtist": "Marlene Dietrich",
+          "src": "content/songs/sag-mir-wo-die-blumen-sind-marlene-dietrich.md"
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Flasche auf und gut gelaunt",
+      "songs": [
+        {
+          "slug": "es-gibt-kein-bier-auf-hawaii-paul-kuhn",
+          "title": "Es gibt kein Bier auf Hawaii",
+          "listTitle": "Es gibt kein Bier auf Hawaii",
+          "artist": "Paul Kuhn",
+          "listArtist": "Paul Kuhn",
+          "searchArtist": "Paul Kuhn",
+          "src": "content/songs/es-gibt-kein-bier-auf-hawaii-paul-kuhn.md"
+        },
+        {
+          "slug": "die-getranke-sind-frei-parodie-melodie-die-gedanken-sind-frei",
+          "title": "Die Getränke sind frei",
+          "listTitle": "Die Getränke sind frei",
+          "artist": "Parodie (Melodie: Die Gedanken sind frei)",
+          "listArtist": "Parodie",
+          "searchArtist": "Parodie (Melodie: Die Gedanken sind frei)",
+          "src": "content/songs/die-getranke-sind-frei-parodie-melodie-die-gedanken-sind-frei.md"
+        },
+        {
+          "slug": "rote-lippen-soll-man-kussen-cliff-richard",
+          "title": "Rote Lippen soll man küssen",
+          "listTitle": "Rote Lippen soll man küssen",
+          "artist": "Cliff Richard",
+          "listArtist": "Cliff Richard",
+          "searchArtist": "Cliff Richard",
+          "src": "content/songs/rote-lippen-soll-man-kussen-cliff-richard.md"
+        },
+        {
+          "slug": "hello-mary-lou-jan-kjeld",
+          "title": "Hello Mary Lou",
+          "listTitle": "Hello Mary Lou",
+          "artist": "Jan & Kjeld",
+          "listArtist": "Jan & Kjeld",
+          "searchArtist": "Jan & Kjeld",
+          "src": "content/songs/hello-mary-lou-jan-kjeld.md"
+        },
+        {
+          "slug": "marina-marina-rocco-granata",
+          "title": "Marina, Marina",
+          "listTitle": "Marina, Marina",
+          "artist": "Rocco Granata",
+          "listArtist": "Rocco Granata",
+          "searchArtist": "Rocco Granata",
+          "src": "content/songs/marina-marina-rocco-granata.md"
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Am Lagerfeuer und auf Reisen",
+      "songs": [
+        {
+          "slug": "die-gedanken-sind-frei-volkslied",
+          "title": "Die Gedanken sind frei",
+          "listTitle": "Die Gedanken sind frei",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/die-gedanken-sind-frei-volkslied.md"
+        },
+        {
+          "slug": "am-brunnen-vor-dem-tore-volkslied",
+          "title": "Am Brunnen vor dem Tore",
+          "listTitle": "Am Brunnen vor dem Tore",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/am-brunnen-vor-dem-tore-volkslied.md"
+        },
+        {
+          "slug": "das-wandern-ist-des-mullers-lust-volkslied",
+          "title": "Das Wandern ist des Müllers Lust",
+          "listTitle": "Das Wandern ist des Müllers Lust",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/das-wandern-ist-des-mullers-lust-volkslied.md"
+        },
+        {
+          "slug": "das-lieben-bringt-gross-freud-volkslied",
+          "title": "Das Lieben bringt groß Freud",
+          "listTitle": "Das Lieben bringt groß Freud",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/das-lieben-bringt-gross-freud-volkslied.md"
+        },
+        {
+          "slug": "in-einen-harung-jung-und-schlank-volkslied",
+          "title": "In einen Harung jung und schlank",
+          "listTitle": "In einen Harung jung und schlank",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/in-einen-harung-jung-und-schlank-volkslied.md"
+        },
+        {
+          "slug": "horch-was-kommt-von-draussen-rein-volkslied",
+          "title": "Horch, was kommt von draußen rein",
+          "listTitle": "Horch, was kommt von draußen rein",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/horch-was-kommt-von-draussen-rein-volkslied.md"
+        },
+        {
+          "slug": "es-hatte-ein-bauer-ein-schones-weib-volkslied",
+          "title": "Es hatte ein Bauer ein schönes Weib",
+          "listTitle": "Es hatte ein Bauer ein schönes Weib",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/es-hatte-ein-bauer-ein-schones-weib-volkslied.md"
+        },
+        {
+          "slug": "kein-schoner-land-in-dieser-zeit-volkslied",
+          "title": "Kein schöner Land in dieser Zeit",
+          "listTitle": "Kein schöner Land in dieser Zeit",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/kein-schoner-land-in-dieser-zeit-volkslied.md"
+        },
+        {
+          "slug": "abendstille-uberall-kanon",
+          "title": "Abendstille überall",
+          "listTitle": "Abendstille überall (Kanon)",
+          "artist": "Kanon",
+          "listArtist": "Kanon",
+          "searchArtist": "Kanon",
+          "src": "content/songs/abendstille-uberall-kanon.md"
+        },
+        {
+          "slug": "die-vogelhochzeit-volkslied",
+          "title": "Die Vogelhochzeit",
+          "listTitle": "Die Vogelhochzeit",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/die-vogelhochzeit-volkslied.md"
+        },
+        {
+          "slug": "hoch-auf-dem-gelben-wagen-volkslied",
+          "title": "Hoch auf dem gelben Wagen",
+          "listTitle": "Hoch auf dem gelben Wagen",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/hoch-auf-dem-gelben-wagen-volkslied.md"
+        },
+        {
+          "slug": "es-zogen-auf-sonnigen-wegen-volkslied",
+          "title": "Es zogen auf sonnigen Wegen",
+          "listTitle": "Es zogen auf sonnigen Wegen",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/es-zogen-auf-sonnigen-wegen-volkslied.md"
+        },
+        {
+          "slug": "an-der-saale-hellem-strande-volkslied",
+          "title": "An der Saale hellem Strande",
+          "listTitle": "An der Saale hellem Strande",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/an-der-saale-hellem-strande-volkslied.md"
+        },
+        {
+          "slug": "auf-auf-zum-frohlichen-jagen-volkslied",
+          "title": "Auf, auf zum fröhlichen Jagen",
+          "listTitle": "Auf, auf zum fröhlichen Jagen",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/auf-auf-zum-frohlichen-jagen-volkslied.md"
+        },
+        {
+          "slug": "es-dunkelt-schon-in-der-heide-volkslied",
+          "title": "Es dunkelt schon in der Heide",
+          "listTitle": "Es dunkelt schon in der Heide",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/es-dunkelt-schon-in-der-heide-volkslied.md"
+        },
+        {
+          "slug": "sah-ein-knab-ein-roslein-stehn-volkslied",
+          "title": "Sah ein Knab’ ein Röslein stehn",
+          "listTitle": "Sah ein Knab’ ein Röslein stehn",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/sah-ein-knab-ein-roslein-stehn-volkslied.md"
+        },
+        {
+          "slug": "in-einem-bachlein-helle-die-forelle-volkslied",
+          "title": "In einem Bächlein helle (Die Forelle)",
+          "listTitle": "In einem Bächlein helle (Die Forelle)",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/in-einem-bachlein-helle-die-forelle-volkslied.md"
+        },
+        {
+          "slug": "nehmt-abschied-bruder-volkslied",
+          "title": "Nehmt Abschied, Brüder",
+          "listTitle": "Nehmt Abschied, Brüder",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/nehmt-abschied-bruder-volkslied.md"
+        },
+        {
+          "slug": "hab-mein-wage-vollgeladen-volkslied",
+          "title": "Hab mein Wage vollgeladen",
+          "listTitle": "Hab mein Wage vollgeladen",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/hab-mein-wage-vollgeladen-volkslied.md"
+        },
+        {
+          "slug": "wenn-alle-brunnlein-fliessen-volkslied",
+          "title": "Wenn alle Brünnlein fließen",
+          "listTitle": "Wenn alle Brünnlein fließen",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/wenn-alle-brunnlein-fliessen-volkslied.md"
+        },
+        {
+          "slug": "ade-zur-guten-nacht-volkslied",
+          "title": "Ade zur guten Nacht",
+          "listTitle": "Ade zur guten Nacht",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/ade-zur-guten-nacht-volkslied.md"
+        },
+        {
+          "slug": "auf-du-junger-wandersmann-volkslied",
+          "title": "Auf du junger Wandersmann",
+          "listTitle": "Auf du junger Wandersmann",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/auf-du-junger-wandersmann-volkslied.md"
+        },
+        {
+          "slug": "dat-du-min-leevsten-bust-volkslied",
+          "title": "Dat du min Leevsten büst",
+          "listTitle": "Dat du min Leevsten büst",
+          "artist": "Volkslied",
+          "listArtist": "Volkslied",
+          "searchArtist": "Volkslied",
+          "src": "content/songs/dat-du-min-leevsten-bust-volkslied.md"
+        },
+        {
+          "slug": "heut-kommt-der-hans-zu-mir-kanon",
+          "title": "Heut kommt der Hans zu mir",
+          "listTitle": "Heut kommt der Hans zu mir",
+          "artist": "Kanon",
+          "listArtist": "Kanon",
+          "searchArtist": "Kanon",
+          "src": "content/songs/heut-kommt-der-hans-zu-mir-kanon.md"
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "🗺 International & English Classics",
+      "songs": [
+        {
+          "slug": "sailing-rod-stewart",
+          "title": "Sailing",
+          "listTitle": "Sailing",
+          "artist": "Rod Stewart",
+          "listArtist": "Rod Stewart",
+          "searchArtist": "Rod Stewart",
+          "src": "content/songs/sailing-rod-stewart.md"
+        },
+        {
+          "slug": "let-it-be-the-beatles",
+          "title": "Let It Be",
+          "listTitle": "Let It Be",
+          "artist": "The Beatles",
+          "listArtist": "The Beatles",
+          "searchArtist": "The Beatles",
+          "src": "content/songs/let-it-be-the-beatles.md"
+        },
+        {
+          "slug": "yesterday-the-beatles",
+          "title": "Yesterday",
+          "listTitle": "Yesterday",
+          "artist": "The Beatles",
+          "listArtist": "The Beatles",
+          "searchArtist": "The Beatles",
+          "src": "content/songs/yesterday-the-beatles.md"
+        },
+        {
+          "slug": "somewhere-over-the-rainbow-traditional",
+          "title": "Somewhere over the Rainbow",
+          "listTitle": "Somewhere over the Rainbow",
+          "artist": "Traditional",
+          "listArtist": "Traditional",
+          "searchArtist": "Traditional",
+          "src": "content/songs/somewhere-over-the-rainbow-traditional.md"
+        },
+        {
+          "slug": "john-brown-s-body-traditional",
+          "title": "John Brown's Body",
+          "listTitle": "John Brown's Body",
+          "artist": "Traditional",
+          "listArtist": "Traditional",
+          "searchArtist": "Traditional",
+          "src": "content/songs/john-brown-s-body-traditional.md"
+        },
+        {
+          "slug": "country-roads-john-denver",
+          "title": "Country Roads",
+          "listTitle": "Country Roads",
+          "artist": "John Denver",
+          "listArtist": "John Denver",
+          "searchArtist": "John Denver",
+          "src": "content/songs/country-roads-john-denver.md"
+        },
+        {
+          "slug": "yellow-submarine-the-beatles",
+          "title": "Yellow Submarine",
+          "listTitle": "Yellow Submarine",
+          "artist": "The Beatles",
+          "listArtist": "The Beatles",
+          "searchArtist": "The Beatles",
+          "src": "content/songs/yellow-submarine-the-beatles.md"
+        }
+      ]
+    }
+  ]
+}
