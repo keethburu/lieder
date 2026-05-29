@@ -135,32 +135,68 @@
 
         .toolbar-row {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
         .theme-switcher {
+            position: relative;
+        }
+
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: 4px;
-            background: var(--control-bg);
+            justify-content: center;
             border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 1rem;
             border-radius: 999px;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:focus-visible,
+        .theme-switcher.open .theme-toggle {
+            background: var(--control-bg);
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .theme-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 122px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            box-shadow: 0 8px 24px var(--shadow-color);
+            z-index: 250;
+        }
+
+        .theme-switcher.open .theme-menu {
+            display: flex;
         }
 
         .theme-btn {
             border: none;
             background: transparent;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            padding: 7px 11px;
-            border-radius: 999px;
+            font-size: 0.84rem;
+            padding: 8px 10px;
+            border-radius: 10px;
             cursor: pointer;
+            text-align: left;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
@@ -311,12 +347,7 @@
 
         @media (max-width: 560px) {
             .toolbar-row {
-                justify-content: center;
-            }
-
-            .theme-switcher {
-                width: 100%;
-                justify-content: center;
+                margin-bottom: 8px;
             }
         }
     </style>
@@ -326,10 +357,15 @@
     <header>
         <h1>Lieder Philadelphia / 30.5.26</h1>
         <div class="toolbar-row">
-            <div class="theme-switcher" aria-label="Farbschema">
-                <button type="button" class="theme-btn" data-theme-option="system" onclick="setThemePreference('system')">System</button>
-                <button type="button" class="theme-btn" data-theme-option="light" onclick="setThemePreference('light')">Hell</button>
-                <button type="button" class="theme-btn" data-theme-option="dark" onclick="setThemePreference('dark')">Dunkel</button>
+            <div class="theme-switcher" id="themeSwitcher">
+                <button type="button" class="theme-toggle" id="themeToggle" aria-label="Farbschema öffnen" aria-haspopup="true" aria-expanded="false" aria-controls="themeMenu" onclick="toggleThemeMenu()">
+                    <span id="themeToggleIcon" aria-hidden="true">◐</span>
+                </button>
+                <div class="theme-menu" id="themeMenu" role="menu" aria-label="Farbschema auswählen">
+                    <button type="button" class="theme-btn" data-theme-option="system" onclick="setThemePreference('system')">System</button>
+                    <button type="button" class="theme-btn" data-theme-option="light" onclick="setThemePreference('light')">Hell</button>
+                    <button type="button" class="theme-btn" data-theme-option="dark" onclick="setThemePreference('dark')">Dunkel</button>
+                </div>
             </div>
         </div>
         <div class="search-container">
@@ -1142,9 +1178,31 @@ But his soul goes marching on.</div>
 
     <script>
         const themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const themeSwitcher = document.getElementById('themeSwitcher');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleIcon = document.getElementById('themeToggleIcon');
+        const themeNames = {
+            system: 'System',
+            light: 'Hell',
+            dark: 'Dunkel'
+        };
+        const themeIcons = {
+            system: '◐',
+            light: '☼',
+            dark: '☾'
+        };
 
         function getStoredThemePreference() {
             return localStorage.getItem('theme-preference') || 'system';
+        }
+
+        function setThemeMenuOpen(isOpen) {
+            themeSwitcher.classList.toggle('open', isOpen);
+            themeToggle.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        function toggleThemeMenu() {
+            setThemeMenuOpen(!themeSwitcher.classList.contains('open'));
         }
 
         function applyTheme(theme) {
@@ -1153,6 +1211,11 @@ But his soul goes marching on.</div>
             } else {
                 delete document.documentElement.dataset.theme;
             }
+
+            const themeName = themeNames[theme] || themeNames.system;
+            themeToggleIcon.textContent = themeIcons[theme] || themeIcons.system;
+            themeToggle.setAttribute('title', 'Farbschema: ' + themeName);
+            themeToggle.setAttribute('aria-label', 'Farbschema: ' + themeName + '. Auswahl öffnen');
 
             document.querySelectorAll('.theme-btn').forEach(button => {
                 const isActive = button.dataset.themeOption === theme;
@@ -1164,6 +1227,7 @@ But his soul goes marching on.</div>
         function setThemePreference(theme) {
             localStorage.setItem('theme-preference', theme);
             applyTheme(theme);
+            setThemeMenuOpen(false);
         }
 
         themeMediaQuery.addEventListener('change', () => {
@@ -1172,12 +1236,24 @@ But his soul goes marching on.</div>
             }
         });
 
+        document.addEventListener('click', event => {
+            if (!themeSwitcher.contains(event.target)) {
+                setThemeMenuOpen(false);
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                setThemeMenuOpen(false);
+            }
+        });
+
         applyTheme(getStoredThemePreference());
 
         // Funktion zum Auf- und Zuklappen eines Liedes
         function toggleSong(button) {
             const content = button.nextElementSibling;
-            const arrow = button.querySelector('span:last-child');
+            const arrow = button.lastElementChild;
             
             if (content.classList.contains('active')) {
                 content.classList.remove('active');
@@ -1197,7 +1273,8 @@ But his soul goes marching on.</div>
             document.querySelectorAll('.song-content').forEach(content => {
                 content.classList.remove('active');
             });
-            document.querySelectorAll('.song-trigger span:last-child').forEach(arrow => {
+            document.querySelectorAll('.song-trigger').forEach(button => {
+                const arrow = button.lastElementChild;
                 arrow.textContent = '▼';
             });
         }
@@ -1226,7 +1303,7 @@ But his soul goes marching on.</div>
                     wrapper.style.display = 'none';
                     // Schließen, wenn es unsichtbar wird
                     wrapper.querySelector('.song-content').classList.remove('active');
-                    wrapper.querySelector('.song-trigger span:last-child').textContent = '▼';
+                    wrapper.querySelector('.song-trigger').lastElementChild.textContent = '▼';
                 }
             });
         }
