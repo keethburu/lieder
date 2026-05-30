@@ -23,33 +23,6 @@
           "src": "content/songs/uber-den-wolken-reinhard-mey.md"
         },
         {
-          "slug": "griechischer-wein-udo-jurgens",
-          "title": "Griechischer Wein",
-          "listTitle": "Griechischer Wein",
-          "artist": "Udo Jürgens",
-          "listArtist": "Udo Jürgens",
-          "searchArtist": "Udo Jürgens",
-          "src": "content/songs/griechischer-wein-udo-jurgens.md"
-        },
-        {
-          "slug": "er-gehort-zu-mir-marianne-rosenberg",
-          "title": "Er gehört zu mir",
-          "listTitle": "Er gehört zu mir",
-          "artist": "Marianne Rosenberg",
-          "listArtist": "Marianne Rosenberg",
-          "searchArtist": "Marianne Rosenberg",
-          "src": "content/songs/er-gehort-zu-mir-marianne-rosenberg.md"
-        },
-        {
-          "slug": "ich-wollte-nie-erwachsen-sein-nessaja-peter-maffay-tabaluga",
-          "title": "Ich wollte nie erwachsen sein (Nessaja)",
-          "listTitle": "Ich wollte nie erwachsen sein (Nessaja)",
-          "artist": "Peter Maffay / Tabaluga",
-          "listArtist": "Peter Maffay / Tabaluga",
-          "searchArtist": "Peter Maffay / Tabaluga",
-          "src": "content/songs/ich-wollte-nie-erwachsen-sein-nessaja-peter-maffay-tabaluga.md"
-        },
-        {
           "slug": "wenn-ein-mensch-kurze-zeit-lebt-puhdys",
           "title": "Wenn ein Mensch kurze Zeit lebt",
           "listTitle": "Wenn ein Mensch kurze Zeit lebt",
@@ -57,76 +30,8 @@
           "listArtist": "Puhdys",
           "searchArtist": "Puhdys",
           "src": "content/songs/wenn-ein-mensch-kurze-zeit-lebt-puhdys.md"
-        },
-        {
-          "slug": "die-antwort-weiss-ganz-allein-der-wind-marlene-dietrich",
-          "title": "Die Antwort weiß ganz allein der Wind",
-          "listTitle": "Die Antwort weiß ganz allein der Wind",
-          "artist": "Marlene Dietrich",
-          "listArtist": "Marlene Dietrich",
-          "searchArtist": "Marlene Dietrich",
-          "src": "content/songs/die-antwort-weiss-ganz-allein-der-wind-marlene-dietrich.md"
-        },
-        {
-          "slug": "sag-mir-wo-die-blumen-sind-marlene-dietrich",
-          "title": "Sag mir wo die Blumen sind",
-          "listTitle": "Sag mir wo die Blumen sind",
-          "artist": "Marlene Dietrich",
-          "listArtist": "Marlene Dietrich",
-          "searchArtist": "Marlene Dietrich",
-          "src": "content/songs/sag-mir-wo-die-blumen-sind-marlene-dietrich.md"
         }
-      ]
-    },
-    {
-      "id": "section-2",
-      "title": "Flasche auf und gut gelaunt",
-      "songs": [
-        {
-          "slug": "es-gibt-kein-bier-auf-hawaii-paul-kuhn",
-          "title": "Es gibt kein Bier auf Hawaii",
-          "listTitle": "Es gibt kein Bier auf Hawaii",
-          "artist": "Paul Kuhn",
-          "listArtist": "Paul Kuhn",
-          "searchArtist": "Paul Kuhn",
-          "src": "content/songs/es-gibt-kein-bier-auf-hawaii-paul-kuhn.md"
-        },
-        {
-          "slug": "die-getranke-sind-frei-parodie-melodie-die-gedanken-sind-frei",
-          "title": "Die Getränke sind frei",
-          "listTitle": "Die Getränke sind frei",
-          "artist": "Parodie (Melodie: Die Gedanken sind frei)",
-          "listArtist": "Parodie",
-          "searchArtist": "Parodie (Melodie: Die Gedanken sind frei)",
-          "src": "content/songs/die-getranke-sind-frei-parodie-melodie-die-gedanken-sind-frei.md"
-        },
-        {
-          "slug": "rote-lippen-soll-man-kussen-cliff-richard",
-          "title": "Rote Lippen soll man küssen",
-          "listTitle": "Rote Lippen soll man küssen",
-          "artist": "Cliff Richard",
-          "listArtist": "Cliff Richard",
-          "searchArtist": "Cliff Richard",
-          "src": "content/songs/rote-lippen-soll-man-kussen-cliff-richard.md"
-        },
-        {
-          "slug": "hello-mary-lou-jan-kjeld",
-          "title": "Hello Mary Lou",
-          "listTitle": "Hello Mary Lou",
-          "artist": "Jan & Kjeld",
-          "listArtist": "Jan & Kjeld",
-          "searchArtist": "Jan & Kjeld",
-          "src": "content/songs/hello-mary-lou-jan-kjeld.md"
-        },
-        {
-          "slug": "marina-marina-rocco-granata",
-          "title": "Marina, Marina",
-          "listTitle": "Marina, Marina",
-          "artist": "Rocco Granata",
-          "listArtist": "Rocco Granata",
-          "searchArtist": "Rocco Granata",
-          "src": "content/songs/marina-marina-rocco-granata.md"
-        }
+        
       ]
     },
     {
@@ -187,15 +92,7 @@
           "searchArtist": "Volkslied",
           "src": "content/songs/horch-was-kommt-von-draussen-rein-volkslied.md"
         },
-        {
-          "slug": "es-hatte-ein-bauer-ein-schones-weib-volkslied",
-          "title": "Es hatte ein Bauer ein schönes Weib",
-          "listTitle": "Es hatte ein Bauer ein schönes Weib",
-          "artist": "Volkslied",
-          "listArtist": "Volkslied",
-          "searchArtist": "Volkslied",
-          "src": "content/songs/es-hatte-ein-bauer-ein-schones-weib-volkslied.md"
-        },
+        
         {
           "slug": "kein-schoner-land-in-dieser-zeit-volkslied",
           "title": "Kein schöner Land in dieser Zeit",
